@@ -1,10 +1,8 @@
 /*
- * emAlloc.h
+ * @file emAlloc.h
+ * @author Mannone Vito
  *
- *      Author: vitomannone
- *
- * Description:
- * This module allows to use a static allocated buffer to make
+ * @brief This module allows to use a static allocated buffer to make
  * dynamic allocation of memory. It uses a first fit algorithm.
  * It is possibile to define the functions to use for the locking mechanism in the
  * emAllocPort.h file.
@@ -65,29 +63,40 @@ typedef enum
 } emErrorReturn_t;
 
 /*
- * Definition of the malloc function
- * Input: size --> size in bytes for the block of memory to be allocated
- * Returns: pointer to the block of memory allocated, NULL if it was not possible
+ * @brief Definition of the malloc function
+ *
+ * @param size represents the size in bytes for the block of memory to be allocated
+ * @return void*, pointer to the block of memory allocated, NULL if it was not possible
  * 		to allocate memory. Check getEmMallocError return value for the error.
  */
 void *emMalloc(size_t size);
 
 /*
- * Definition of the free function
- * Input: ptr --> pointer for the block of memory to be freed.
- * Returns: no return values. Check getEmMallocError return value
- * 		for the eventually present error.
+ * @brief Definition of the free function
+ * @param ptr, pointer to the block of memory to be freed.
+ * @return no return values.
+ *
+ * Check getEmMallocError return value for the eventually present error.
  */
 void emFree(void *ptr);
 
 /*
- * Definition of the function to get the software module status.
- * The internal error status code is reset to emMalloc_OK only if a call to this function is made.
+ * @brief Definition of the function to get the software module status.
+ *
+ * @param void
+ * @return emErrorReturn_t, module internal status
+ *
+ * The internal error status code is reset to emMalloc_OK every time
+ * a call to this function is made.
  */
 emErrorReturn_t getEmMallocError(void);
 
 /*
- * This functions returns the total remaining bytes.
+ * @brief This functions returns the total remaining bytes.
+ *
+ * @params void
+ * @return size_t, dimension in bytes of the remaining space
+ *
  * Note that the remaining bytes can be not aligned. Due to fragmentation,
  * it is not possible to guarantee that this value represent an actual usable
  * memory area.

@@ -1,12 +1,12 @@
 /*
- * emAllocPort.h
+ * @file emAllocPort.h
+ * @author Mannone Vito
  *
- *      Author: vitomannone
+ * @brief Porting header file for the emAlloc software module.
  *
- * Porting header file for the emAlloc software module. This header file must be used
- * to define the functions that implements all the system calls to manage cuncurrency
- * access to the emAlloc memory buffer.
- * Only binary sempahore are used.
+ * This header file must be used to define the functions that implements
+ * all the system calls to manage concurrency access to the emAlloc memory buffer.
+ * Only binary semaphore are used.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -49,17 +49,17 @@
  * Necessary definition for lock/unlock functions
  * It is necessary to define these functions:
  * 		emAllocPort_EnterCritical(ptrSem) [semaphore acquisition]
- * 			input values: ptrSem --> pointer to the semaphore to be used
- * 			must returns: 0 if there is no errors on the semaphore
+ * 			@param ptrSem, pointer to the semaphore to be used
+ * 			@return 0 if there is no errors on the semaphore
  *		emAllocPort_ExitCritical(ptrSem) [semaphore release]
- * 			input values: ptrSem --> pointer to the semaphore to be used
- * 			must returns: is not evaluated
+ * 			@param ptrSem, pointer to the semaphore to be used
+ * 			@return is not evaluated
  *		emAllocPort_InitBynSem(strName) [semaphore creation, only binary semaphore]
- * 			input values: strName --> string to be used as the semaphore name
- * 			must returns: pointer to the created semaphore
+ * 			@param strName, string to be used as the semaphore name
+ * 			@return pointer to the created semaphore
  *		emAllocPort_BynSemDelete(ptrSem) [semaphore deletion. This function is not currently used, here for future use]
- * 			input values: ptrSem --> pointer to the semaphore to be used
- * 			must returns: not evaluated
+ * 			@param ptrSem, pointer to the semaphore to be used
+ * 			@return is not evaluated
  *
  * Note: here is used the library "cmsis_os2.h" to handle the system-calls as example
  */
